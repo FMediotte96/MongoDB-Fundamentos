@@ -1,0 +1,26 @@
+Json: objetos mapeado en una estructura de tipo clave valor:
+
+{
+    "orders": [
+        {
+            "ordeno":"748745378",
+            "date": "June 30, 2088 1:54:23 AM",
+            "customer": [
+                {
+                    "custid": "11045",
+                    "fname": "Facu"
+                }
+            ]
+        }
+    ]
+}
+
+mongo inicia una instancia de la base de datos
+
+db.inventario.find().pretty() -> lo muestra en formato Json y más amigable a la vista
+
+db.adminCommand("listDatabases") -> lista las bases de datos
+
+todos los operadores de mongodb empiezan con el $
+
+mongoimport -v --db autosNuevo --collection collNueva --type json  --file autos.json --jsonArray
