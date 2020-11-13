@@ -24,3 +24,5 @@ db.adminCommand("listDatabases") -> lista las bases de datos
 todos los operadores de mongodb empiezan con el $
 
 mongoimport -v --db autosNuevo --collection collNueva --type json  --file autos.json --jsonArray
+
+load("basico.js")

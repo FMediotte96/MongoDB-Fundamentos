@@ -1,0 +1,8 @@
+Querys
+
+{$and:[{year:{$lt:1980}},{$or:[{runtime:{$lt:60}},{"awards.wins":{$eq:0}}]}]}
+
+{"genres.0":"Comedy"} -> accede a un array
+
+{actors:/Jeff/i} -> no es case sensitive y funciona como un like '%palabra%' de sql
+
