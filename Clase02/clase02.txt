@@ -6,3 +6,56 @@ Querys
 
 {actors:/Jeff/i} -> no es case sensitive y funciona como un like '%palabra%' de sql
 
+mongoimport --db dbName --collection collectionName --file fileName.json --jsonArray //Importar desde JSON
+
+mongoexport -d dbName -c collName --out fileName //Exporta un JSON
+
+mongodump --db dbName //Backup en dir dump BSON
+
+mongorestore //Restore desde dump
+
+//Crear bds
+user db //Creo una base nueva o si existe la uso
+
+//Crear Colecciones
+db.createCollection(collName) //Crear colecciones.
+show collections //Muestra las colecciones de una base.
+
+//Crear documentos en colecciones
+db.col.insert() //Inserto un documento
+db.col.insert([]) //Inserto multiples documentos
+db.col.save() //Otra sintaxis, más usada desde código
+
+//Consultar Documentos
+db.col.find({criterio}) //Resultados
+db.col.find({}).pretty() //Resultados con formato
+db.col.find({$or:[{ "userId" :6},{ "userId" :7}]})
+db.col.find({$and:[{ "userId" :6},{ "id" :53}]}) //AND
+db.col.find({$and:[{ "userId" :6},{ "title" : /error/ }]}) //AND-LIKE
+db.col.find({ "id" :{$gte:60}, "userId" :6}) //AND Mayor o igual que
+db.col.find({},{ "website" :1, "_id" :0}) //Selecciono qué atributos mostrar
+
+//Limite
+db.col.find({}).limit(n)
+
+//Orden
+db.col.find({}).sort({ "website" :-1}); //Orden DESC
+
+//Editar documentos
+db.col.update({criterio},{data}) //Actualiza un doc
+db.col.update({criterio},{data},{multi: true }). //Actualiza multiples doc
+
+//Reemplazar documentos
+db.col.save({ObjectId},{nuevo doc}) //Reemplaza todo el doc
+
+//Borrar documentos
+db.col.remove({criterio}) //Elimina un elemento
+
+
+//Agregación
+
+//aggregate
+db.col.aggregate([
+    {$match:{key:value}},
+    {$group:{_id, operator}}
+]);
